@@ -12,7 +12,7 @@ class Coin:
         self.maximum_trading_fee = None
         self.lot_multiplier = None
 
-    def update_asset_pair_infos(self):
+    def update_asset_pair_info(self):
 
         self._update_last_traded_price()
 
