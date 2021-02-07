@@ -1,6 +1,4 @@
 import krakenex
-from pprint import pprint
-
 
 kraken = krakenex.API()
 
@@ -29,14 +27,12 @@ class Coin:
     def _update_last_traded_price(self):
 
         asset_pair_ticker = kraken.query_public("Ticker", {"pair": self.asset_pair})
-
         self._check_for_unknwown_asset_pair_error(asset_pair_ticker)
-
         self.last_traded_price = asset_pair_ticker["result"][self.asset_pair]["c"][0]
 
 
     def _check_for_unknwown_asset_pair_error(self, api_asset_response):
 
         if "EQuery:Unknown asset pair" in api_asset_response["error"]:
-            raise Exception(f"{api_asset_response} asset pair does not exist")
+            raise Exception(f"{self.asset_pair} asset pair does not exist")
 
