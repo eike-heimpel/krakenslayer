@@ -140,3 +140,5 @@ cython_debug/
 # keys
 kraken.key
 my_tests/
+
+.idea/
