@@ -11,6 +11,9 @@ class Coin:
         self.minimum_order_volume = None
         self.maximum_trading_fee = None
         self.lot_multiplier = None
+        self.amount_owned = None
+        self.average_purchase_price = None
+        self.
 
     def update_asset_pair_info(self):
 
@@ -35,4 +38,3 @@ class Coin:
 
         if "EQuery:Unknown asset pair" in api_asset_response["error"]:
             raise Exception(f"{self.asset_pair} asset pair does not exist")
-
