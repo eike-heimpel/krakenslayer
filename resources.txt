@@ -1,1 +1,11 @@
 Asset codes: https://support.kraken.com/hc/en-us/articles/360001185506-How-to-interpret-asset-codes
+
+
+successful order return message: {'error': [], 'result': {'descr': {'order': 'buy 25.00000000 ADAEUR @ market'}, 'txid': ['OGRQHW-W7YNQ-N7QSED']}}
+
+
+example Kraken order: print(kraken.query_private("AddOrder", {  "pair": ada.asset_pair,
+                                                                "type": "buy",
+                                                                "ordertype": "market",
+                                                                "volume": 25,
+                                                                'trading_agreement': 'agree'}))
