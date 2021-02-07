@@ -3,14 +3,13 @@ class My_Ledger:
     def __init__(self):
 
         self.assets = {}
+        self.trades = []
 
-    def add_asset(self, asset_name, asset):
+    def add_asset(self, asset):
 
-         self.assets[asset_name] = asset
+         self.assets[asset.asset_pair] = asset
 
+    def add_trade(self, trade_info):
 
-class Trades:
+        self.trades.append(trade_info)
 
-    def __init__(self):
-
-        pass
