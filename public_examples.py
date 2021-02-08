@@ -2,11 +2,15 @@ from krakenslayer.coins import Coin
 from krakenslayer.record_keeping import My_Ledger
 import krakenex
 from pprint import pprint
+from icecream import ic
+
+kraken = krakenex.API()
+kraken.load_key('kraken.key')
 
 
 my_ledger = My_Ledger()
 
-ether = Coin("ETH", "EUR")
+ether = Coin("XETHZ", "EUR")
 ada = Coin("ADA", "EUR")
 
 my_ledger.add_asset(ether)
@@ -19,6 +23,15 @@ kraken.load_key('kraken.key')
 
 
 ## lets trade some
+
+## find out what all of our coins currently worth
+for asset_pair, asset in my_ledger.assets.items():
+    asset.update_asset_pair_info()
+    asset.update_current_value()
+    ic(asset.last_traded_price)
+    ic(asset.current_value)
+    # update_ledger()
+
 
 order_ids = []
 # assume we placed multiple market orders here and added the ordertxid
