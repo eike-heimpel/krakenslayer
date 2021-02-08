@@ -13,7 +13,7 @@ class Coin:
         self.lot_multiplier = None
         self.amount_owned = 0
         self.average_purchase_price = None
-        self.current_value = None
+        self.current_value = 0
 
     def update_asset_pair_info(self):
 
@@ -34,15 +34,17 @@ class Coin:
         elif trade_info["type"] == "sell":
             self.amount_owned -= float(trade_info["vol"])
 
-        # calculate current value
         # calculate average purchase price
 
+    def update_current_value(self):
+
+        self.current_value = self.last_traded_price * self.amount_owned
 
     def _update_last_traded_price(self):
 
         asset_pair_ticker = kraken.query_public("Ticker", {"pair": self.asset_pair})
         self._check_for_unknwown_asset_pair_error(asset_pair_ticker)
-        self.last_traded_price = asset_pair_ticker["result"][self.asset_pair]["c"][0]
+        self.last_traded_price = float(asset_pair_ticker["result"][self.asset_pair]["c"][0])
 
 
     def _check_for_unknwown_asset_pair_error(self, api_asset_response):
